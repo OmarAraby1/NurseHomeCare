@@ -1,0 +1,6 @@
+{
+  "name": "Nurses Home Care",
+  "description": "Bilingual premium landing page for Nurses Home Care, a startup professional home nursing and care services provider in Saudi Arabia.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

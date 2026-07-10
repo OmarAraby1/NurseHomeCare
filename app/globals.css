@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-plus-jakarta), var(--font-cairo), sans-serif;
+  --font-cairo: var(--font-cairo), sans-serif;
+  
+  --color-brand-emerald: #0f4c43;
+  --color-brand-emerald-light: #165f54;
+  --color-brand-emerald-dark: #0a332d;
+  --color-brand-cream: #f9f6f0;
+  --color-brand-sand: #f0e9dc;
+  --color-brand-gold: #c3a475;
+  --color-brand-gold-dark: #a98755;
+  --color-brand-coral: #e07a5f;
+}
+
+/* Elegant custom animations & focus states */
+.glow-on-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glow-on-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px -10px rgba(15, 76, 67, 0.3);
+}
+
+/* Smooth custom scroll behavior */
+html {
+  scroll-behavior: smooth;
+}
