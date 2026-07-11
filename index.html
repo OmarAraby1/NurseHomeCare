@@ -1,707 +1,1125 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>رعاية تمريض منزلي | Nurses Home Care - Saudi Arabia</title>
-  <meta name="description" content="رعاية تمريض منزلي (Nurses Home Care) تقدم خدمات التمريض والرعاية الصحية المنزلية الاحترافية والآمنة لجميع الأعمار في مختلف أنحاء المملكة العربية السعودية. اتصل بنا على 0551404251.">
-  <link rel="canonical" href="https://nursecare24.com/">
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2224%22 fill=%22%230f4c43%22/><text y=%2258%22 x=%2250%22 font-size=%2232%22 font-weight=%22bold%22 font-family=%22sans-serif%22 fill=%22%23f9f6f0%22 text-anchor=%22middle%22>NC24</text></svg>">
+  <title>رعاية تمريض منزلي | Nurses Home Care</title>
+  <meta name="description" content="Professional home nursing and care services for all ages across Saudi Arabia. رعاية تمريضية منزلية متكاملة لكافة الأعمار في المملكة العربية السعودية.">
   
-  <!-- SEO OpenGraph Meta Tags -->
-  <meta property="og:title" content="رعاية تمريض منزلي | Nurses Home Care - Saudi Arabia">
-  <meta property="og:description" content="خدمات رعاية وتمريض منزلي احترافية ومتكاملة لجميع الأعمار في منزلك في المملكة العربية السعودية مع الالتزام التام بالأمان والجودة الطبية.">
-  <meta property="og:url" content="https://nursecare24.com/">
-  <meta property="og:type" content="website">
-
-  <!-- Google Fonts (Cairo for Arabic, Plus Jakarta Sans for English) -->
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
-  <!-- Tailwind CSS Play CDN -->
+  <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Configure Tailwind custom classes -->
   <script>
     tailwind.config = {
       theme: {
         extend: {
           fontFamily: {
-            sans: ['"Plus Jakarta Sans"', 'Cairo', 'sans-serif'],
             cairo: ['Cairo', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
           },
-          colors: {
-            brand: {
-              emerald: '#0f4c43',
-              emeraldLight: '#165f54',
-              emeraldDark: '#0a332d',
-              cream: '#f9f6f0',
-              sand: '#f0e9dc',
-              gold: '#c3a475',
-              goldDark: '#a98755',
-              coral: '#e07a5f',
-            }
-          }
         }
       }
     }
   </script>
+
   <style>
-    html {
-      scroll-behavior: smooth;
+    /* Frosted Glass Theme & Custom Background Gradient */
+    .frosted-glass-bg {
+      background: radial-gradient(circle at top right, #E0F2F1 0%, #F8F9FA 50%, #FFF9C4 100%);
     }
-    .lang-en .show-ar { display: none !important; }
-    .lang-ar .show-en { display: none !important; }
+
+    .frosted-glass-card {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    .frosted-glass-header {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Bilingual toggling strategy */
+    body[data-lang="ar"] .lang-en { display: none !important; }
+    body[data-lang="en"] .lang-ar { display: none !important; }
     
-    .glow-on-hover {
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    body[data-lang="ar"] { 
+      direction: rtl; 
+      font-family: 'Cairo', sans-serif; 
     }
-    .glow-on-hover:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 24px -10px rgba(15, 76, 67, 0.3);
+    body[data-lang="en"] { 
+      direction: ltr; 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
     }
   </style>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-[#f9f6f0] text-slate-800 antialiased font-sans lang-ar">
+<body data-lang="ar" class="frosted-glass-bg text-stone-900 antialiased min-h-screen">
 
-  <!-- TOP BAR -->
-  <div class="bg-brand-emerald text-brand-sand text-xs py-2.5 px-4 text-center border-b border-brand-emeraldLight font-medium tracking-wide">
-    <span class="show-ar">رعاية تمريضية احترافية في جميع أنحاء المملكة العربية السعودية</span>
-    <span class="show-en">Professional Nursing Care Services Across Saudi Arabia</span>
-  </div>
+  <div class="min-h-screen flex flex-col justify-between">
+    
+    <!-- HEADER / NAVIGATION -->
+    <header class="sticky top-0 z-50 frosted-glass-header transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        
+        <!-- Logo & Brand Identity -->
+        <div class="flex items-center gap-3">
+          <div class="h-11 w-11 rounded-xl bg-emerald-600 text-stone-50 flex items-center justify-center shadow-lg shadow-emerald-600/10 transition-transform hover:scale-105 duration-300">
+            <i data-lucide="heart" class="h-6 w-6 fill-stone-50/10 stroke-[2.2]"></i>
+          </div>
+          <div>
+            <h1 class="text-lg sm:text-xl font-extrabold tracking-tight text-stone-900 flex items-center gap-1">
+              <span class="lang-ar">رعاية تمريض منزلي</span>
+              <span class="lang-en">Nurses Home Care</span>
+            </h1>
+            <p class="text-[10px] sm:text-xs text-stone-500 font-medium">
+              <span class="lang-ar">خدمات تمريضية ورعاية صحية متكاملة</span>
+              <span class="lang-en">Professional Home Nursing & Care Services</span>
+            </p>
+          </div>
+        </div>
 
-  <!-- STICKY NAVBAR -->
-  <header class="sticky top-0 z-50 bg-[#f9f6f0]/95 backdrop-blur-md border-b border-stone-200">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="px-3 h-10 bg-brand-emerald rounded-xl flex items-center justify-center text-brand-cream font-bold text-base shadow-sm">NC24</div>
-        <div>
-          <h1 class="text-brand-emerald font-bold text-lg leading-tight">
-            <span class="show-ar">رعاية تمريض منزلي</span>
-            <span class="show-en">Nurses Home Care</span>
-          </h1>
-          <p class="text-xs text-brand-gold font-medium leading-none mt-0.5">
-            <span class="show-ar">Nurses Home Care</span>
-            <span class="show-en">رعاية تمريض منزلي</span>
-          </p>
+        <!-- Desktop Navigation links -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-stone-600">
+          <a href="#about" class="hover:text-emerald-600 transition-colors duration-200">
+            <span class="lang-ar">رسالتنا</span>
+            <span class="lang-en">About Us</span>
+          </a>
+          <a href="#services" class="hover:text-emerald-600 transition-colors duration-200">
+            <span class="lang-ar">خدماتنا</span>
+            <span class="lang-en">Our Services</span>
+          </a>
+          <a href="#why-us" class="hover:text-emerald-600 transition-colors duration-200">
+            <span class="lang-ar">لماذا نحن؟</span>
+            <span class="lang-en">Why Choose Us?</span>
+          </a>
+          <a href="#inquiry-form" class="hover:text-emerald-600 transition-colors duration-200">
+            <span class="lang-ar">طلب خدمة</span>
+            <span class="lang-en">Contact Us</span>
+          </a>
+        </nav>
+
+        <!-- Actions & Language Switch -->
+        <div class="hidden md:flex items-center gap-4">
+          <!-- Language Switch Button -->
+          <button 
+            onclick="toggleLanguage()"
+            class="flex items-center gap-1.5 px-3 py-2 text-xs font-bold text-stone-700 bg-stone-100 hover:bg-stone-200/80 rounded-lg border border-stone-200 transition-all cursor-pointer"
+            title="Switch Language"
+          >
+            <i data-lucide="globe" class="h-4 w-4 text-stone-500"></i>
+            <span class="lang-ar">English</span>
+            <span class="lang-en">العربية</span>
+          </button>
+
+          <!-- Direct Dial Header Callout -->
+          <a 
+            href="tel:0551404251" 
+            class="flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-emerald-500 hover:text-emerald-600 bg-emerald-50 hover:bg-emerald-100/70 border border-emerald-200/80 rounded-lg transition-all"
+          >
+            <i data-lucide="phone" class="h-4 w-4"></i>
+            <span class="lang-ar">اتصل الآن: ٠٥٥١٤٠٤٢٥١</span>
+            <span class="lang-en">Call: 0551404251</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggles -->
+        <div class="flex items-center gap-3 md:hidden">
+          <button 
+            onclick="toggleLanguage()"
+            class="p-2 bg-stone-100 rounded-lg border border-stone-200 text-stone-600 text-xs font-bold"
+          >
+            <span class="lang-ar">EN</span>
+            <span class="lang-en">عربي</span>
+          </button>
+
+          <button 
+            onclick="toggleMobileMenu()"
+            class="p-2.5 rounded-xl bg-stone-100 border border-stone-200 text-stone-700"
+            aria-label="Toggle Menu"
+          >
+            <i data-lucide="menu" id="menu-icon-open" class="h-5 w-5 block"></i>
+            <i data-lucide="x" id="menu-icon-close" class="h-5 w-5 hidden"></i>
+          </button>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- MOBILE NAVIGATION MENU DRAWER -->
+    <div id="mobile-menu-drawer" class="hidden md:hidden fixed inset-0 top-20 z-40 bg-stone-900/40 backdrop-blur-md">
+      <div class="bg-white border-b border-stone-200 p-6 flex flex-col gap-5 text-start shadow-xl">
+        <a href="#about" onclick="closeMobileMenu()" class="text-base font-bold text-stone-800 hover:text-emerald-600 transition-colors">
+          <span class="lang-ar">رسالتنا وهويتنا</span>
+          <span class="lang-en">Our Mission & Identity</span>
+        </a>
+        <a href="#services" onclick="closeMobileMenu()" class="text-base font-bold text-stone-800 hover:text-emerald-600 transition-colors">
+          <span class="lang-ar">خدماتنا الرعائية</span>
+          <span class="lang-en">Our Home Care Services</span>
+        </a>
+        <a href="#why-us" onclick="closeMobileMenu()" class="text-base font-bold text-stone-800 hover:text-emerald-600 transition-colors">
+          <span class="lang-ar">معايير الموثوقية</span>
+          <span class="lang-en">Standards of Trust</span>
+        </a>
+        <a href="#inquiry-form" onclick="closeMobileMenu()" class="text-base font-bold text-stone-800 hover:text-emerald-600 transition-colors">
+          <span class="lang-ar">طلب خدمة تمريض منزلية</span>
+          <span class="lang-en">Submit Care Request</span>
+        </a>
+
+        <div class="pt-4 border-t border-stone-100 flex flex-col gap-3">
+          <a href="tel:0551404251" class="w-full flex items-center justify-center gap-2 py-3 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl font-bold text-sm">
+            <i data-lucide="phone" class="h-4 w-4"></i>
+            <span class="lang-ar">اتصال مباشر فوري</span>
+            <span class="lang-en">Direct Phone Call</span>
+          </a>
+          <a href="https://wa.me/966551404251" target="_blank" class="w-full flex items-center justify-center gap-2 py-3 bg-stone-900 hover:bg-stone-800 text-white rounded-xl font-bold text-sm">
+            <i data-lucide="message-square" class="h-4 w-4 text-emerald-400"></i>
+            <span class="lang-ar">تواصل عبر واتساب</span>
+            <span class="lang-en">WhatsApp Chat</span>
+          </a>
         </div>
       </div>
+    </div>
 
-      <!-- Desktop Nav -->
-      <nav class="hidden md:flex items-center gap-8 font-medium text-sm">
-        <a href="#services" class="text-slate-600 hover:text-brand-emerald transition-colors font-semibold">
-          <span class="show-ar">خدماتنا</span><span class="show-en">Our Services</span>
-        </a>
-        <a href="#whyUs" class="text-slate-600 hover:text-brand-emerald transition-colors font-semibold">
-          <span class="show-ar">قيمنا</span><span class="show-en">Our Values</span>
-        </a>
-        <a href="#howItWorks" class="text-slate-600 hover:text-brand-emerald transition-colors font-semibold">
-          <span class="show-ar">آلية العمل</span><span class="show-en">How It Works</span>
-        </a>
-        <a href="#contact" class="text-brand-emerald font-bold hover:text-brand-emeraldLight transition-colors">
-          <span class="show-ar">تواصل معنا</span><span class="show-en">Contact Us</span>
-        </a>
-      </nav>
+    <!-- MAIN HERO CONTENT -->
+    <main class="flex-grow">
+      
+      <!-- HERO SECTION -->
+      <section class="relative overflow-hidden pt-12 pb-20 md:py-28 lg:py-36 bg-stone-50/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Left Info Column -->
+            <div class="lg:col-span-7 flex flex-col items-start gap-5 text-start">
+              
+              <!-- Badge -->
+              <div class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-wider">
+                <span class="lang-ar">خدمات تمريضية معتمدة بالمملكة العربية السعودية</span>
+                <span class="lang-en">Professional Nursing Care Across Saudi Arabia</span>
+              </div>
 
-      <!-- Language Toggle & Direct Inquiry -->
-      <div class="flex items-center gap-4">
-        <button onclick="toggleLanguage()" class="flex items-center gap-1.5 text-xs font-bold uppercase border border-stone-300 rounded-lg px-3 py-1.5 text-slate-700 hover:bg-stone-100 transition-all cursor-pointer">
-          <svg class="w-4 h-4 text-brand-emerald" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253"></path></svg>
-          <span class="show-ar">English</span><span class="show-en">عربي</span>
-        </button>
-        <a href="#contact-form" class="hidden sm:inline-flex items-center justify-center bg-brand-emerald hover:bg-brand-emeraldLight text-brand-cream text-xs font-bold rounded-lg px-4 py-2.5 transition-all">
-          <span class="show-ar">اطلب استفساراً</span><span class="show-en">Inquire Now</span>
+              <!-- Main Heading -->
+              <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-black text-stone-900 tracking-tight leading-[1.15]">
+                <span class="lang-ar">رعاية تمريضية منزلية مهنية لكافة الأعمار والحالات الصحية</span>
+                <span class="lang-en">Professional Home Nursing Care for All Ages & Situations</span>
+              </h1>
+
+              <!-- Subheading description -->
+              <p class="text-stone-600 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl font-medium">
+                <span class="lang-ar">نحن نقدم خدمات تمريض ورعاية منزلية مهنية ومتكاملة في المملكة العربية السعودية. خدماتنا مصممة لتلبية احتياجات عائلتك بمسؤولية وخصوصية تامة، بدءاً من مرافقة كبار السن ووصولاً إلى متابعة العلامات الحيوية والرعاية الشاملة لأحبائكم في منازلهم.</span>
+                <span class="lang-en">Delivering expert, compassionate home healthcare, professional nursing, and companion support across Saudi Arabia. Dedicated to supporting your family’s physical wellness, emotional dignity, and recovery at home with absolute confidentiality.</span>
+              </p>
+
+              <!-- Action Button Set -->
+              <div class="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-4 mt-4">
+                <a 
+                  href="#inquiry-form"
+                  class="flex items-center justify-center gap-2 px-8 py-4 text-base font-extrabold text-stone-50 bg-stone-900 hover:bg-emerald-600 rounded-xl transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 duration-200"
+                >
+                  <span class="lang-ar">تقديم طلب الرعاية</span>
+                  <span class="lang-en">Submit Care Request</span>
+                  <i data-lucide="arrow-up-right" class="h-5 w-5"></i>
+                </a>
+
+                <a
+                  href="tel:0551404251"
+                  class="flex items-center justify-center gap-2 px-8 py-4 text-base font-extrabold text-stone-900 bg-stone-50 hover:bg-stone-100 border-2 border-stone-200 hover:border-stone-300 rounded-xl transition-all shadow-sm hover:shadow-md duration-200"
+                >
+                  <i data-lucide="phone" class="h-5 w-5 text-emerald-600"></i>
+                  <span class="lang-ar">اتصال مباشر: ٠٥٥١٤٠٤٢٥١</span>
+                  <span class="lang-en">Direct Call: 0551404251</span>
+                </a>
+              </div>
+
+              <!-- Subtext reassurance -->
+              <div class="flex items-center gap-2 mt-2 text-xs sm:text-sm text-stone-500 font-medium">
+                <i data-lucide="check-circle-2" class="h-4 w-4 text-emerald-500 flex-shrink-0"></i>
+                <span class="lang-ar">تواصل فوري وسريع ومباشر عبر الجوال والواتساب على مدار الساعة ٢٤/٧</span>
+                <span class="lang-en">Swift response and direct personal contact via Phone or WhatsApp 24/7</span>
+              </div>
+
+            </div>
+
+            <!-- Right Interactive / Decorative Column with Visual -->
+            <div class="lg:col-span-5 relative">
+              <div class="relative mx-auto max-w-md lg:max-w-none rounded-3xl bg-white p-6 sm:p-8 shadow-xl shadow-stone-200/50 border border-stone-200/60 overflow-hidden">
+                
+                <!-- Background glow overlay -->
+                <div class="absolute top-0 right-0 w-32 h-32 bg-emerald-500/5 rounded-full blur-xl"></div>
+
+                <!-- Premium Hero Care Image -->
+                <div class="relative w-full h-44 sm:h-52 rounded-2xl overflow-hidden mb-5 border border-stone-100 shadow-sm">
+                  <img 
+                    src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?auto=format&fit=crop&w=800&q=80" 
+                    alt="Professional Nursing Home Care" 
+                    class="w-full h-full object-cover"
+                  >
+                  <div class="absolute inset-0 bg-gradient-to-t from-stone-950/40 via-transparent to-transparent"></div>
+                </div>
+                
+                <div class="flex items-center justify-between border-b border-stone-100 pb-5 mb-5">
+                  <div class="flex items-center gap-3">
+                    <div class="p-2.5 rounded-lg bg-stone-100 text-stone-700">
+                      <i data-lucide="clock" class="h-5 w-5 text-emerald-600"></i>
+                    </div>
+                    <div class="text-start">
+                      <h3 class="font-bold text-stone-900 text-sm sm:text-base">
+                        <span class="lang-ar">استشارة فورية ومباشرة</span>
+                        <span class="lang-en">Immediate Inquiries</span>
+                      </h3>
+                      <p class="text-xs text-stone-400">
+                        <span class="lang-ar">جاهزون لمكالمتكم الآن</span>
+                        <span class="lang-en">Ready to receive calls</span>
+                      </p>
+                    </div>
+                  </div>
+                  <span class="inline-flex items-center px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold">
+                    <span class="lang-ar">متاح ٢٤/٧</span>
+                    <span class="lang-en">24/7 Available</span>
+                  </span>
+                </div>
+
+                <div class="space-y-4 text-start">
+                  
+                  <!-- Direct Call Action Box -->
+                  <a 
+                    href="tel:0551404251" 
+                    class="group flex items-center justify-between p-4 rounded-2xl bg-emerald-50/50 hover:bg-emerald-50 border border-emerald-100/50 hover:border-emerald-200 transition-all duration-300"
+                  >
+                    <div class="flex items-center gap-3">
+                      <div class="p-2.5 rounded-xl bg-emerald-600 text-white shadow-md shadow-emerald-600/15">
+                        <i data-lucide="phone" class="h-5 w-5"></i>
+                      </div>
+                      <div>
+                        <p class="text-xs font-semibold text-emerald-800/80 uppercase tracking-wider">
+                          <span class="lang-ar">اتصال هاتفي مباشر</span>
+                          <span class="lang-en">Direct Phone Line</span>
+                        </p>
+                        <p class="text-sm sm:text-base font-black text-stone-900 mt-0.5 tracking-wide">
+                          0551404251
+                        </p>
+                      </div>
+                    </div>
+                    <div class="p-1.5 rounded-lg bg-white border border-stone-100 text-stone-400 group-hover:text-emerald-600 group-hover:border-emerald-200 transition-all">
+                      <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                    </div>
+                  </a>
+
+                  <!-- WhatsApp Action Box -->
+                  <a 
+                    href="https://wa.me/966551404251" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    class="group flex items-center justify-between p-4 rounded-2xl bg-stone-50/80 hover:bg-stone-50 border border-stone-200/60 hover:border-stone-300 transition-all duration-300"
+                  >
+                    <div class="flex items-center gap-3">
+                      <div class="p-2.5 rounded-xl bg-emerald-500 text-white shadow-md shadow-emerald-500/15">
+                        <i data-lucide="message-square" class="h-5 w-5"></i>
+                      </div>
+                      <div>
+                        <p class="text-xs font-semibold text-stone-500 uppercase tracking-wider">
+                          <span class="lang-ar">محادثة واتساب فورية</span>
+                          <span class="lang-en">Instant WhatsApp Support</span>
+                        </p>
+                        <p class="text-sm sm:text-base font-black text-stone-950 mt-0.5">
+                          <span class="lang-ar">ابدأ المحادثة الآن</span>
+                          <span class="lang-en">Chat with Coordinator</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="p-1.5 rounded-lg bg-white border border-stone-100 text-stone-400 group-hover:text-stone-700 group-hover:border-stone-200 transition-all">
+                      <i data-lucide="arrow-up-right" class="h-4 w-4"></i>
+                    </div>
+                  </a>
+
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- QUICK INFO BANNER -->
+      <section class="bg-emerald-600 text-stone-50 py-6" id="quick-banner">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div class="flex items-center gap-3 text-center md:text-start">
+            <span class="hidden sm:inline-flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-500/50">
+              <i data-lucide="activity" class="h-5 w-5"></i>
+            </span>
+            <p class="text-sm sm:text-base font-bold">
+              <span class="lang-ar">هل تبحث عن رعاية عاجلة؟ تحدث معنا مباشرة الآن للترتيب السريع للحالة.</span>
+              <span class="lang-en">Looking for urgent home care support? Message us directly for rapid consultation.</span>
+            </p>
+          </div>
+          <a 
+            href="https://wa.me/966551404251"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex items-center gap-2 bg-stone-900 hover:bg-stone-800 text-stone-50 px-6 py-3 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition-all shadow-md shadow-black/10"
+          >
+            <i data-lucide="message-square" class="h-4 w-4 text-emerald-400"></i>
+            <span class="lang-ar">تحدث معنا واتساب</span>
+            <span class="lang-en">Chat with Us on WhatsApp</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ABOUT THE BRAND SECTION -->
+      <section class="py-20 bg-white" id="about">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Visual block -->
+            <div class="lg:col-span-5 relative" id="about-visual">
+              <div class="relative rounded-3xl overflow-hidden aspect-[4/3] sm:aspect-square md:aspect-[4/3] lg:aspect-square xl:aspect-[4/3] shadow-lg border border-stone-200/40 group">
+                <img 
+                  src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=800&q=80" 
+                  alt="Trusted Home Nursing Care" 
+                  class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                >
+                <div class="absolute inset-0 bg-gradient-to-t from-stone-950/60 via-transparent to-transparent"></div>
+                
+                <!-- Frosted Glass Floating Badge -->
+                <div class="absolute bottom-6 left-6 right-6 bg-white/45 backdrop-blur-md rounded-2xl p-4 border border-white/45 shadow-xl text-start">
+                  <div class="flex items-center gap-2.5">
+                    <div class="p-2 bg-emerald-600 text-white rounded-lg">
+                      <i data-lucide="shield" class="h-4 w-4"></i>
+                    </div>
+                    <div>
+                      <h4 class="text-sm font-black text-stone-950">
+                        <span class="lang-ar">ثقة وأمان وخصوصية</span>
+                        <span class="lang-en">Trust & Ultimate Privacy</span>
+                      </h4>
+                      <p class="text-xs text-stone-850 leading-relaxed mt-0.5 font-bold">
+                        <span class="lang-ar">رعاية مهنية تحترم قيم العائلات السعودية وتلبي المتطلبات بدقة</span>
+                        <span class="lang-en">Ethical home care respecting family values and clinical protocols</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- About content block -->
+            <div class="lg:col-span-7 flex flex-col items-start gap-5 text-start" id="about-content">
+              <div class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-wider">
+                <span class="lang-ar">رسالتنا وهويتنا</span>
+                <span class="lang-en">Our Mission & Identity</span>
+              </div>
+              
+              <h2 class="text-2xl sm:text-3xl md:text-4xl font-extrabold text-stone-900 tracking-tight leading-tight">
+                <span class="lang-ar">رعاية تمريضية تمتد لكافة أفراد العائلة وفي جميع مراحل الحياة</span>
+                <span class="lang-en">Empathetic Nursing & Home Care Supporting Every Stage of Life</span>
+              </h2>
+              
+              <p class="text-stone-600 leading-relaxed text-base sm:text-lg">
+                <span class="lang-ar">انطلاقاً من كوننا شركة ناشئة طموحة، ندرك تماماً أن كل حالة صحية فريدة وتتطلب تفهماً عميقاً وعناية شديدة الخصوصية. خدماتنا مصممة لتجعل الدعم والتمريض متاحاً ومرناً بالكامل، بدءاً من الرعاية الخفيفة والمرافقة اللطيفة لكبار السن، ووصولاً إلى العناية اللاحقة بالعمليات والمتابعة المستمرة للحالات.</span>
+                <span class="lang-en">As a fast-growing home healthcare startup, we believe that medical support should always be tailored and deeply personalized. We coordinate highly flexible general home nursing care that helps you manage medical requirements easily, from elder companionship to assisting with vital health indicators and medication oversight.</span>
+              </p>
+
+              <p class="text-stone-600 leading-relaxed text-base sm:text-lg">
+                <span class="lang-ar">نحن نركز على توفير تواصل مباشر ومستمر معكم وبدون تعقيدات، مما يسمح لنا بتقديم الرعاية فور الحاجة إليها، وتغطية مختلف متطلبات عائلتك في جميع مناطق المملكة العربية السعودية.</span>
+                <span class="lang-en">By establishing direct, straightforward contact channels with Saudi families, we remove administrative layers and match support to your expectations quickly and safely across all regions of the country.</span>
+              </p>
+
+              <div class="w-full grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-stone-100">
+                <div class="flex items-start gap-2">
+                  <i data-lucide="check-circle-2" class="h-5 w-5 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                  <div>
+                    <h4 class="font-bold text-stone-900 text-sm">
+                      <span class="lang-ar">دعم صحي متعدد الأعمار</span>
+                      <span class="lang-en">Multi-Generation Care</span>
+                    </h4>
+                    <p class="text-xs text-stone-500 mt-0.5">
+                      <span class="lang-ar">تغطية متطلبات الرضع، البالغين، وكبار السن</span>
+                      <span class="lang-en">Supporting newborn guidance to elder companionship</span>
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-2">
+                  <i data-lucide="check-circle-2" class="h-5 w-5 text-emerald-500 mt-0.5 flex-shrink-0"></i>
+                  <div>
+                    <h4 class="font-bold text-stone-900 text-sm">
+                      <span class="lang-ar">تواصل مباشر ٢٤ ساعة</span>
+                      <span class="lang-en">24/7 Direct Contact</span>
+                    </h4>
+                    <p class="text-xs text-stone-500 mt-0.5">
+                      <span class="lang-ar">اتصال وواتساب فوري لحل أي استفسار</span>
+                      <span class="lang-en">Instant phone and WhatsApp with zero wait</span>
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- CORE SERVICES SECTION -->
+      <section class="py-20 bg-stone-100/50 border-y border-stone-200/50" id="services">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <!-- Header block of Services -->
+          <div class="text-center max-w-3xl mx-auto flex flex-col items-center gap-4 mb-16">
+            <div class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-wider">
+              <span class="lang-ar">خدمات مرنة ومصممة خصيصاً لعائلتك</span>
+              <span class="lang-en">Flexible Care Tailored to Your Family</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
+              <span class="lang-ar">خدمات الرعاية المنزلية والتمريض العام</span>
+              <span class="lang-en">Our Home Care & Nursing Support</span>
+            </h2>
+            <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+              <span class="lang-ar">نحن نقدم خدمات رعاية ودعم منزلي شاملة ومرنة لمختلف الفئات العمرية. الخدمات الموضحة أدناه هي أمثلة مهنية على الرعاية التي ننظمها وندعمها، والقابلة للتعديل والتشكيل الكامل لتلائم احتياجاتكم المحددة.</span>
+              <span class="lang-en">We provide broad, flexible home care support for various age groups and clinical situations. The services listed below represent professional examples of the care we organize and support, fully adaptable to your specific medical and daily requirements.</span>
+            </p>
+          </div>
+
+          <!-- Services Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
+            
+            <!-- Card 1 -->
+            <div class="bg-white rounded-2xl p-6 sm:p-8 border border-stone-200/60 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-start text-start group">
+              <div class="p-3.5 rounded-xl bg-emerald-50 text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                <i data-lucide="syringe" class="h-6 w-6 stroke-[2]"></i>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-stone-900 mb-3">
+                <span class="lang-ar">إعطاء الحقن وإدارة الأدوية</span>
+                <span class="lang-en">Injections & Medication Administration</span>
+              </h3>
+              <p class="text-stone-500 text-sm leading-relaxed mb-4">
+                <span class="lang-ar">تقديم الدعم المهني في إعطاء الحقن الموصوفة طبياً من الأطباء المعالجين، وإدارة جرعات الأدوية والمساعدة على الالتزام بالخطة العلاجية بدقة تامة.</span>
+                <span class="lang-en">Professional nursing assistance with prescribed injections, timely administration of medicines, and dedicated therapy compliance support under precise protocols.</span>
+              </p>
+              <div class="mt-auto flex items-center gap-1.5 text-xs text-emerald-600 font-bold">
+                <span class="lang-ar">استفسار عن رعاية الحقن</span>
+                <span class="lang-en">Inquire about injections</span>
+                <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-2xl p-6 sm:p-8 border border-stone-200/60 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-start text-start group">
+              <div class="p-3.5 rounded-xl bg-emerald-50 text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                <i data-lucide="activity" class="h-6 w-6 stroke-[2]"></i>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-stone-900 mb-3">
+                <span class="lang-ar">مراقبة العلامات الحيوية والمتابعة</span>
+                <span class="lang-en">Vital Signs & Health Monitoring</span>
+              </h3>
+              <p class="text-stone-500 text-sm leading-relaxed mb-4">
+                <span class="lang-ar">المتابعة الدورية للعلامات الحيوية مثل ضغط الدم، مستويات السكر، معدل نبضات القلب، ومتابعة الوضع الصحي العام لتقديم تقارير دقيقة ومستمرة.</span>
+                <span class="lang-en">Routine checking of vital stats including blood pressure, blood glucose levels, heart rates, and keeping regular records to share with your primary physician.</span>
+              </p>
+              <div class="mt-auto flex items-center gap-1.5 text-xs text-emerald-600 font-bold">
+                <span class="lang-ar">استفسار عن الفحص والمراقبة</span>
+                <span class="lang-en">Inquire about monitoring</span>
+                <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-2xl p-6 sm:p-8 border border-stone-200/60 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-start text-start group">
+              <div class="p-3.5 rounded-xl bg-emerald-50 text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                <i data-lucide="clock" class="h-6 w-6 stroke-[2]"></i>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-stone-900 mb-3">
+                <span class="lang-ar">العناية اللاحقة بالعمليات والمساعدة</span>
+                <span class="lang-en">Post-Surgical Care & Recovery Support</span>
+              </h3>
+              <p class="text-stone-500 text-sm leading-relaxed mb-4">
+                <span class="lang-ar">رعاية داعمة خلال فترة النقاهة بعد العمليات الجراحية، والمساعدة على الحركة الآمنة، وتغيير الضمادات البسيطة، والتشجيع على الاستشفاء المنزلي.</span>
+                <span class="lang-en">Attentive, gentle care during recovery after medical surgeries. Assistance with safe mobility, basic dressing changes, and professional recovery encouragement.</span>
+              </p>
+              <div class="mt-auto flex items-center gap-1.5 text-xs text-emerald-600 font-bold">
+                <span class="lang-ar">استفسار عن رعاية العمليات</span>
+                <span class="lang-en">Inquire about post-op care</span>
+                <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white rounded-2xl p-6 sm:p-8 border border-stone-200/60 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-start text-start group">
+              <div class="p-3.5 rounded-xl bg-emerald-50 text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                <i data-lucide="users" class="h-6 w-6 stroke-[2]"></i>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-stone-900 mb-3">
+                <span class="lang-ar">مرافقة كبار السن والدعم المعنوي</span>
+                <span class="lang-en">Elder Companionship & Dignity Care</span>
+              </h3>
+              <p class="text-stone-500 text-sm leading-relaxed mb-4">
+                <span class="lang-ar">مرافقة ودعم كبار السن في حياتهم اليومية، والاهتمام بالسلامة الشخصية، وتقديم الدعم النفسي والاجتماعي للحفاظ على راحتهم وكرامتهم.</span>
+                <span class="lang-en">Dedicated companion care for senior family members. Focused on mental wellbeing, social engagement, and ensuring safety during daily life activities.</span>
+              </p>
+              <div class="mt-auto flex items-center gap-1.5 text-xs text-emerald-600 font-bold">
+                <span class="lang-ar">استفسار عن مرافقة المسنين</span>
+                <span class="lang-en">Inquire about elder care</span>
+                <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+              </div>
+            </div>
+
+            <!-- Card 5 -->
+            <div class="bg-white rounded-2xl p-6 sm:p-8 border border-stone-200/60 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-start text-start group">
+              <div class="p-3.5 rounded-xl bg-emerald-50 text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                <i data-lucide="baby" class="h-6 w-6 stroke-[2]"></i>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-stone-900 mb-3">
+                <span class="lang-ar">رعاية ودعم المواليد الجدد والأمهات</span>
+                <span class="lang-en">Newborn & Maternal Care Guidance</span>
+              </h3>
+              <p class="text-stone-500 text-sm leading-relaxed mb-4">
+                <span class="lang-ar">إرشاد الأمهات الجدد حول العناية بالطفل، ومتابعة صحة المولود، وتوفير المساعدة والراحة للأمهات خلال فترة ما بعد الولادة بأعلى مستويات الرفق.</span>
+                <span class="lang-en">Reassuring home guidance for new mothers regarding infant care, baby wellbeing, safe nursing postures, and gentle postpartum physical and mental support.</span>
+              </p>
+              <div class="mt-auto flex items-center gap-1.5 text-xs text-emerald-600 font-bold">
+                <span class="lang-ar">استفسار عن رعاية المواليد</span>
+                <span class="lang-en">Inquire about baby care</span>
+                <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+              </div>
+            </div>
+
+            <!-- Card 6 -->
+            <div class="bg-white rounded-2xl p-6 sm:p-8 border border-stone-200/60 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col items-start text-start group">
+              <div class="p-3.5 rounded-xl bg-emerald-50 text-emerald-600 mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">
+                <i data-lucide="heart" class="h-6 w-6 stroke-[2]"></i>
+              </div>
+              <h3 class="text-lg sm:text-xl font-bold text-stone-900 mb-3">
+                <span class="lang-ar">الدعم الشامل للرعاية المنزلية</span>
+                <span class="lang-en">Comprehensive Home Care Assistance</span>
+              </h3>
+              <p class="text-stone-500 text-sm leading-relaxed mb-4">
+                <span class="lang-ar">مساعدة الأفراد من كافة الأعمار في تسيير الأنشطة اليومية، ودعم الحركة البدنية والوقاية من السقوط، مع تهيئة بيئة منزلية مريحة وآمنة تماماً.</span>
+                <span class="lang-en">Helping individuals of any age with daily living activities, physical mobility support, fall prevention, and ensuring a safe, hygienic, and comforting environment.</span>
+              </p>
+              <div class="mt-auto flex items-center gap-1.5 text-xs text-emerald-600 font-bold">
+                <span class="lang-ar">استفسار عن رعاية شاملة</span>
+                <span class="lang-en">Inquire about home assistance</span>
+                <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Broad disclaimer card -->
+          <div class="mt-12 bg-stone-50 border border-stone-200 rounded-2xl p-6 text-start flex gap-4 items-start">
+            <div class="p-2 bg-emerald-50 text-emerald-600 rounded-lg flex-shrink-0">
+              <i data-lucide="shield" class="h-5 w-5"></i>
+            </div>
+            <p class="text-xs sm:text-sm text-stone-600 leading-relaxed font-medium">
+              <span class="lang-ar">ملاحظة: الخدمات المذكورة أعلاه هي أمثلة توضيحية لخدمات الدعم والتمريض العام التي نقدمها لتسهيل حياتكم اليومية وتلبية متطلبات أحبائكم، وليست قائمة حصرية. اتصل بنا لمناقشة حالتك الخاصة.</span>
+              <span class="lang-en">Note: The services listed above are illustrative examples of the general support and nursing care we arrange to help your family. They are not an exhaustive list. Please contact us to discuss your individual case.</span>
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- TRUST & GEOGRAPHIC STRENGTH SECTION -->
+      <section class="py-20 bg-white" id="why-us">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div class="text-center max-w-3xl mx-auto flex flex-col items-center gap-4 mb-16">
+            <div class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-wider">
+              <span class="lang-ar">معايير الثقة والالتزام</span>
+              <span class="lang-en">Standards of Trust & Dedication</span>
+            </div>
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-stone-900 tracking-tight">
+              <span class="lang-ar">لماذا يثق بنا الأهالي في المملكة العربية السعودية؟</span>
+              <span class="lang-en">Why Families Across Saudi Arabia Choose Us</span>
+            </h2>
+            <p class="text-stone-600 text-sm sm:text-base leading-relaxed">
+              <span class="lang-ar">باعتبارنا شركة ناشئة في مجال الرعاية والتمريض المنزلي، نضع الأمان والموثوقية والتواصل المباشر ركيزة أساسية لكل خدمة نقدمها لعائلتك.</span>
+              <span class="lang-en">As a modern home care startup, we put safety, absolute confidentiality, and genuine personal connection at the core of every home service.</span>
+            </p>
+          </div>
+
+          <!-- Values Grid (Factual & High Quality) -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <div class="p-6 rounded-2xl bg-stone-50 border border-stone-100 text-start flex flex-col gap-4">
+              <div class="h-10 w-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                <i data-lucide="map-pin" class="h-5 w-5"></i>
+              </div>
+              <h3 class="font-bold text-stone-900 text-base">
+                <span class="lang-ar">تغطية شاملة للمملكة</span>
+                <span class="lang-en">Kingdom-Wide Presence</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-stone-500 leading-relaxed">
+                <span class="lang-ar">نحن نقدم خدماتنا في مختلف المناطق والمدن في المملكة العربية السعودية، ملتزمين بتوفير الدعم السريع أينما كنت.</span>
+                <span class="lang-en">We offer flexible home support services across different regions and cities in Saudi Arabia, ensuring quick assistance wherever you reside.</span>
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-stone-50 border border-stone-100 text-start flex flex-col gap-4">
+              <div class="h-10 w-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                <i data-lucide="users" class="h-5 w-5"></i>
+              </div>
+              <h3 class="font-bold text-stone-900 text-base">
+                <span class="lang-ar">رعاية متكاملة لكافة الأعمار</span>
+                <span class="lang-en">Care Tailored to All Ages</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-stone-500 leading-relaxed">
+                <span class="lang-ar">نتميز بمرونتنا الكبيرة في توفير الرعاية المناسبة للأطفال، الشباب، البالغين، وكبار السن، متفهمين الاحتياجات المتغيرة لكل مرحلة عمرية.</span>
+                <span class="lang-en">Highly flexible care supporting newborns, children, active adults, and elderly seniors alike, understanding the delicate needs of each stage.</span>
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-stone-50 border border-stone-100 text-start flex flex-col gap-4">
+              <div class="h-10 w-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                <i data-lucide="phone" class="h-5 w-5"></i>
+              </div>
+              <h3 class="font-bold text-stone-900 text-base">
+                <span class="lang-ar">تواصل مباشر وصادق</span>
+                <span class="lang-en">Direct & Human Connection</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-stone-500 leading-relaxed">
+                <span class="lang-ar">لا نعتمد على الأنظمة الآلية المعقدة؛ تواصلك معنا مباشر بالكامل، مما يضمن تلبية طلبات عائلتك بأسرع وقت وأعلى دقة.</span>
+                <span class="lang-en">No confusing automated bots. Your contact is entirely personal and direct with our coordinators, allowing immediate attention to your requests.</span>
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-stone-50 border border-stone-100 text-start flex flex-col gap-4">
+              <div class="h-10 w-10 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+                <i data-lucide="shield" class="h-5 w-5"></i>
+              </div>
+              <h3 class="font-bold text-stone-900 text-base">
+                <span class="lang-ar">الاحترام والخصوصية التامة</span>
+                <span class="lang-en">Absolute Family Privacy</span>
+              </h3>
+              <p class="text-xs sm:text-sm text-stone-500 leading-relaxed">
+                <span class="lang-ar">نحترم حرمة المنازل وخصوصية العائلات بشكل مطلق، ونعمل على تعزيز الشعور بالأمان والسكينة للجميع.</span>
+                <span class="lang-en">We respect your home, traditions, and family privacy with the utmost integrity, fostering complete trust and clinical peace of mind.</span>
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- CONVERSION-FRIENDLY INQUIRY FORM SECTION -->
+      <section class="py-20 bg-stone-100/30 border-t border-stone-200/50" id="inquiry-form">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6">
+          <div class="bg-white rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xl border border-stone-200/60 relative overflow-hidden text-start">
+            
+            <!-- Ambient glow accent -->
+            <div class="absolute top-0 left-0 w-36 h-36 bg-emerald-500/5 rounded-full blur-xl"></div>
+
+            <div class="flex flex-col items-start gap-4 mb-8">
+              <div class="px-3 py-1 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-700 text-xs font-bold uppercase tracking-wider">
+                <span class="lang-ar">تواصل سريع ومباشر</span>
+                <span class="lang-en">Swift Personal Contact</span>
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-stone-900">
+                <span class="lang-ar">اطلب خدمة الرعاية والتمريض الآن</span>
+                <span class="lang-en">Request Home Nursing & Care</span>
+              </h2>
+              <p class="text-sm text-stone-500 leading-relaxed">
+                <span class="lang-ar">يرجى ملء النموذج السريع أدناه لتوضيح احتياجات عائلتك العامة. عند النقر على إرسال، سيقوم النظام بفتح تطبيق البريد الإلكتروني الخاص بك لتوجيه الطلب مباشرة ومجاناً إلى بريدنا الرسمي، وسنقوم بالرد والاتصال بك فوراً.</span>
+                <span class="lang-en">Fill out this simple, quick form to outline your general care needs. Submitting will immediately open your device’s default email application to send your inquiry directly and securely to our email at ayaarab720@gmail.com with no hidden steps.</span>
+              </p>
+            </div>
+
+            <!-- Success Alert (Hidden initially) -->
+            <div id="form-success-alert" class="hidden p-6 rounded-2xl bg-emerald-50 border border-emerald-100 flex flex-col items-center text-center gap-4 transition-all duration-300">
+              <div class="h-12 w-12 rounded-full bg-emerald-600 text-white flex items-center justify-center">
+                <i data-lucide="mail" class="h-6 w-6"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-stone-900 text-lg">
+                  <span class="lang-ar">جاري تحضير طلبك...</span>
+                  <span class="lang-en">Preparing your request...</span>
+                </h3>
+                <p class="text-sm text-stone-600 mt-1 max-w-md">
+                  <span class="lang-ar">سيتم الآن فتح تطبيق البريد الإلكتروني على جهازك لإرسال الاستفسار مباشرة إلى ayaarab720@gmail.com. يرجى إرسال الرسالة وسنقوم بالتواصل معك فوراً!</span>
+                  <span class="lang-en">Your email application will now open to send this inquiry directly to ayaarab720@gmail.com. Please hit send in your email app to reach us!</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Form -->
+            <form id="care-inquiry-form" onsubmit="handleFormSubmit(event)" class="space-y-6">
+              
+              <!-- Field 1: Full Name -->
+              <div>
+                <label for="user-name" class="block text-sm font-bold text-stone-800 mb-2">
+                  <span class="lang-ar">الاسم الكامل</span>
+                  <span class="lang-en">Full Name</span>
+                  <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="user-name"
+                  required
+                  placeholder="مثال: محمد بن عبد العزيز"
+                  class="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-stone-900 text-sm font-medium transition-all"
+                >
+              </div>
+
+              <!-- Field 2: Phone Number -->
+              <div>
+                <label for="user-phone" class="block text-sm font-bold text-stone-800 mb-2">
+                  <span class="lang-ar">رقم الجوال لتلقي الاتصال</span>
+                  <span class="lang-en">Phone Number for Callbacks</span>
+                  <span class="text-red-500">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="user-phone"
+                  required
+                  placeholder="مثال: 0551404251"
+                  class="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-stone-900 text-sm font-medium tracking-wide transition-all"
+                >
+              </div>
+
+              <!-- Field 3: Approximate Service Required -->
+              <div>
+                <label for="user-service" class="block text-sm font-bold text-stone-800 mb-2">
+                  <span class="lang-ar">نوع خدمة الرعاية المطلوبة تقريباً</span>
+                  <span class="lang-en">Approximate Service Needed</span>
+                </label>
+                <select
+                  id="user-service"
+                  class="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-stone-800 text-sm font-medium transition-all cursor-pointer"
+                >
+                  <option value="" class="lang-ar">-- يرجى اختيار الخدمة التقريبية --</option>
+                  <option value="إعطاء الحقن وإدارة الأدوية / Injections & Medication">
+                    إعطاء الحقن وإدارة الأدوية / Injections & Medication
+                  </option>
+                  <option value="مراقبة العلامات الحيوية والمتابعة / Vital Signs Monitoring">
+                    مراقبة العلامات الحيوية والمتابعة / Vital Signs Monitoring
+                  </option>
+                  <option value="العناية اللاحقة بالعمليات والمساعدة / Post-Surgical Care">
+                    العناية اللاحقة بالعمليات والمساعدة / Post-Surgical Care
+                  </option>
+                  <option value="مرافقة كبار السن والدعم المعنوي / Elder Companionship">
+                    مرافقة كبار السن والدعم المعنوي / Elder Companionship
+                  </option>
+                  <option value="رعاية ودعم المواليد الجدد والأمهات / Newborn Guidance">
+                    رعاية ودعم المواليد الجدد والأمهات / Newborn Guidance
+                  </option>
+                  <option value="الدعم الشامل للرعاية المنزلية / Comprehensive Support">
+                    الدعم الشامل للرعاية المنزلية / Comprehensive Support
+                  </option>
+                </select>
+              </div>
+
+              <!-- Field 4: Care Message / Requirements -->
+              <div>
+                <label for="user-message" class="block text-sm font-bold text-stone-800 mb-2">
+                  <span class="lang-ar">تفاصيل إضافية عن الرعاية ومتطلباتك الخاصة</span>
+                  <span class="lang-en">Additional Details / Specific Family Requirements</span>
+                </label>
+                <textarea
+                  id="user-message"
+                  rows="4"
+                  placeholder="مثال: العمر التقريبي، عدد الساعات أو الزيارات المطلوبة، وتفاصيل الحالة العامة لتجهيز الرعاية المناسبة..."
+                  class="w-full px-4 py-3.5 rounded-xl border border-stone-200 bg-stone-50 focus:bg-white focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none text-stone-900 text-sm font-medium transition-all resize-y"
+                ></textarea>
+              </div>
+
+              <div class="pt-2">
+                <button
+                  type="submit"
+                  class="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-xl text-stone-50 bg-stone-900 hover:bg-emerald-600 font-extrabold text-base tracking-wide transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5 duration-200 cursor-pointer"
+                >
+                  <i data-lucide="mail" class="h-5 w-5"></i>
+                  <span class="lang-ar">إرسال الطلب عبر البريد الإلكتروني</span>
+                  <span class="lang-en">Send Request via Email</span>
+                </button>
+              </div>
+
+              <!-- Alternative Quick Dial Action -->
+              <div class="text-center pt-4 border-t border-stone-100 text-stone-500 text-xs sm:text-sm font-medium">
+                <span class="lang-ar">أو اتصل بنا مباشرة الآن عبر الرقم: </span>
+                <span class="lang-en">Or call us directly anytime at: </span>
+                <a href="tel:0551404251" class="text-emerald-600 hover:text-emerald-700 font-extrabold underline underline-offset-4 inline-flex items-center gap-1">
+                  0551404251
+                </a>
+              </div>
+
+            </form>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- REASSURING BOTTOM CONTACT WIDGET (FLOATING ACTIONS) -->
+    <div class="fixed bottom-6 right-6 left-6 md:left-auto md:w-80 z-40 bg-white/95 backdrop-blur-md p-4 rounded-2xl border border-stone-200 shadow-2xl flex items-center justify-between gap-4">
+      <div class="text-start">
+        <p class="text-[10px] uppercase font-extrabold tracking-wider text-emerald-600">
+          <span class="lang-ar">طلب فوري ومباشر</span>
+          <span class="lang-en">Immediate Contact</span>
+        </p>
+        <p class="text-xs font-bold text-stone-800 mt-0.5">
+          <span class="lang-ar">تحدث مع منسق الرعاية الآن</span>
+          <span class="lang-en">Speak to a coordinator now</span>
+        </p>
+      </div>
+      <div class="flex items-center gap-2">
+        <!-- WhatsApp Direct Action -->
+        <a 
+          href="https://wa.me/966551404251" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          class="p-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white transition-all shadow-md shadow-emerald-500/10 hover:scale-105"
+          title="WhatsApp Support"
+        >
+          <i data-lucide="message-square" class="h-5 w-5"></i>
+        </a>
+        
+        <!-- Call Direct Action -->
+        <a 
+          href="tel:0551404251" 
+          class="p-2.5 rounded-xl bg-stone-900 hover:bg-stone-850 text-stone-50 transition-all shadow-md hover:scale-105"
+          title="Call Now"
+        >
+          <i data-lucide="phone" class="h-5 w-5"></i>
         </a>
       </div>
     </div>
-  </header>
 
-  <!-- HERO SECTION -->
-  <section class="relative py-16 sm:py-24 lg:py-32 overflow-hidden bg-gradient-to-b from-[#f9f6f0] via-[#f3ede1] to-[#f9f6f0]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        
-        <div class="lg:col-span-7 space-y-6 text-center lg:text-start rtl:lg:text-right">
-          <div class="inline-flex items-center gap-2 bg-brand-cream border border-brand-gold/30 rounded-full px-4 py-1.5 text-xs font-semibold text-brand-emeraldLight">
-            <span class="w-2 h-2 rounded-full bg-[#e07a5f] animate-pulse"></span>
-            <span class="show-ar">خدمات طبية منزلية موثوقة وعالية الجودة</span>
-            <span class="show-en">Trusted & Premium Home Healthcare</span>
+    <!-- FOOTER -->
+    <footer class="bg-stone-900 text-stone-400 pt-16 pb-28 md:pb-16 border-t border-stone-800" id="footer">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-stone-800 text-start">
+          
+          <!-- Info Col -->
+          <div class="md:col-span-6 flex flex-col items-start gap-4">
+            <div class="flex items-center gap-3">
+              <div class="h-9 w-9 rounded-xl bg-emerald-600 text-white flex items-center justify-center">
+                <i data-lucide="heart" class="h-5 w-5 fill-white/10"></i>
+              </div>
+              <h3 class="text-lg font-black text-white">
+                <span class="lang-ar">رعاية تمريض منزلي</span>
+                <span class="lang-en">Nurses Home Care</span>
+              </h3>
+            </div>
+            <p class="text-sm text-stone-400 leading-relaxed max-w-md">
+              <span class="lang-ar">رعاية تمريض منزلي هي شركتك الناشئة الموثوقة لتقديم خدمات التمريض والرعاية المنزلية المتكاملة لكافة الأعمار في المملكة العربية السعودية. نؤمن بأن الصحة والراحة تبدأ من المنزل.</span>
+              <span class="lang-en">Nurses Home Care is your trusted startup provider for integrated home nursing and compassionate care across all age groups in Saudi Arabia. Health and comfort begin at home.</span>
+            </p>
           </div>
-          
-          <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-emeraldDark leading-tight tracking-tight">
-            <span class="show-ar">رعاية تمريضية متكاملة لجميع الأعمار في منزلك</span>
-            <span class="show-en">Integrated Nursing & Care for All Ages in Your Home</span>
-          </h2>
-          
-          <p class="text-base sm:text-lg text-slate-600 leading-relaxed max-w-xl mx-auto lg:mx-0">
-            <span class="show-ar">نوفر رعاية تمريضية منزلية احترافية ومخصصة بالكامل لتلبية الاحتياجات الصحية واليومية لأحبائكم بأعلى معايير الأمان، الدفء، والنزاهة الأخلاقية والمهنية.</span>
-            <span class="show-en">We provide professional, personalized, and compassionate home nursing services tailored completely to meet your loved ones' medical and daily care needs with the highest standards of safety, dignity, and clinical ethics.</span>
-          </p>
-          
-          <div class="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start">
-            <a href="tel:0551404251" class="inline-flex items-center justify-center bg-brand-emerald hover:bg-brand-emeraldLight text-brand-cream font-bold px-7 py-3.5 rounded-xl transition-all shadow-md gap-2 text-center text-sm">
-              <svg class="w-5 h-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-2.824-1.145-5.12-3.443-6.265-6.265l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z"></path></svg>
-              <span class="show-ar">اتصل بنا الآن (0551404251)</span>
-              <span class="show-en">Call Us Now (0551404251)</span>
+
+          <!-- Quick Links -->
+          <div class="md:col-span-2 flex flex-col items-start gap-3">
+            <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-1">
+              <span class="lang-ar">روابط سريعة</span>
+              <span class="lang-en">Quick Navigation</span>
+            </h4>
+            <a href="#about" class="text-sm hover:text-emerald-400 transition-colors">
+              <span class="lang-ar">رسالتنا وهويتنا</span>
+              <span class="lang-en">Our Mission</span>
             </a>
+            <a href="#services" class="text-sm hover:text-emerald-400 transition-colors">
+              <span class="lang-ar">خدماتنا الرعائية</span>
+              <span class="lang-en">Our Services</span>
+            </a>
+            <a href="#why-us" class="text-sm hover:text-emerald-400 transition-colors">
+              <span class="lang-ar">لماذا يثق بنا الأهالي؟</span>
+              <span class="lang-en">Why Choose Us?</span>
+            </a>
+            <a href="#inquiry-form" class="text-sm hover:text-emerald-400 transition-colors">
+              <span class="lang-ar">طلب خدمة فوري</span>
+              <span class="lang-en">Submit Request</span>
+            </a>
+          </div>
+
+          <!-- Direct Contact Details -->
+          <div class="md:col-span-4 flex flex-col items-start gap-3">
+            <h4 class="text-white font-bold text-sm tracking-wider uppercase mb-1">
+              <span class="lang-ar">تفاصيل الاتصال الرسمية</span>
+              <span class="lang-en">Official Contact Details</span>
+            </h4>
             
-            <a href="https://wa.me/966551404251" target="_blank" class="inline-flex items-center justify-center bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold px-7 py-3.5 rounded-xl transition-all shadow-md gap-2 text-center text-sm">
-              <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.73-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.625 1.449 5.4 0 9.786-4.391 9.788-9.799.002-2.618-1.01-5.08-2.859-6.93C16.305 2.025 13.84 1.01 11.997 1.01c-5.4 0-9.786 4.392-9.788 9.799-.001 1.93.51 3.8 1.478 5.438L2.8 20.9l4.847-1.746z"></path></svg>
-              <span class="show-ar">مراسلة عبر واتساب</span>
-              <span class="show-en">Message on WhatsApp</span>
-            </a>
-          </div>
+            <div class="flex items-center gap-2.5 text-sm">
+              <i data-lucide="phone" class="h-4 w-4 text-emerald-500"></i>
+              <a href="tel:0551404251" class="hover:text-white transition-colors">
+                <span class="lang-ar">رقم الجوال: ٠٥٥١٤٠٤٢٥١</span>
+                <span class="lang-en">Mobile Phone: 0551404251</span>
+              </a>
+            </div>
 
-          <!-- Premium Hero Image Card -->
-          <div class="relative rounded-2xl overflow-hidden shadow-xl border border-stone-200 aspect-[16/9] sm:aspect-[2.1] bg-stone-100 w-full mt-6">
-            <img 
-              src="src/assets/images/nursing_hero_1783719026387.jpg" 
-              alt="Home Care / رعاية تمريض منزلية" 
-              class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-            >
-            <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent flex items-end p-5">
-              <span class="text-white text-xs font-bold tracking-wide uppercase bg-brand-emerald px-3 py-1.5 rounded-lg backdrop-blur-sm shadow-sm font-sans">
-                <span class="show-ar">رعاية تمريضية منزلية مرخصة ٢٤ ساعة</span>
-                <span class="show-en">Licensed 24/7 Home Nursing Care</span>
+            <div class="flex items-center gap-2.5 text-sm">
+              <i data-lucide="mail" class="h-4 w-4 text-emerald-500"></i>
+              <a href="mailto:ayaarab720@gmail.com" class="hover:text-white transition-colors">
+                <span class="lang-ar">البريد الإلكتروني: ayaarab720@gmail.com</span>
+                <span class="lang-en">Email: ayaarab720@gmail.com</span>
+              </a>
+            </div>
+
+            <div class="flex items-center gap-2.5 text-xs text-stone-500 mt-2">
+              <i data-lucide="map-pin" class="h-3.5 w-3.5 text-emerald-500"></i>
+              <span>
+                <span class="lang-ar">المملكة العربية السعودية</span>
+                <span class="lang-en">Kingdom of Saudi Arabia</span>
               </span>
             </div>
           </div>
+
         </div>
 
-        <!-- HERO QUICK INQUIRY FORM CARD -->
-        <div id="contact-form" class="lg:col-span-5 relative">
-          <div class="bg-white border border-stone-200 shadow-xl rounded-2xl p-6 sm:p-8 space-y-6 text-start rtl:text-right">
-            <div>
-              <h3 class="text-xl font-bold text-brand-emerald">
-                <span class="show-ar">طلب استفسار ورعاية منزلية</span>
-                <span class="show-en">Home Care Inquiry</span>
-              </h3>
-              <p class="text-xs text-slate-500 mt-1">
-                <span class="show-ar">أدخل بياناتك وسوف ننشئ لك مسودة بريد تواصل معنا بها، وسوف نتواصل معك مباشرة لتنسيق الخدمة.</span>
-                <span class="show-en">Enter your information below to formulate a pre-set email inquiry to our office. We will call you back.</span>
-              </p>
-            </div>
-            
-            <form onsubmit="handleFormSubmit(event)" class="space-y-4">
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">
-                  <span class="show-ar">الاسم الكامل</span><span class="show-en">Full Name</span>
-                </label>
-                <input type="text" id="form-name" required placeholder="..." class="w-full bg-stone-50 border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-brand-emerald">
-              </div>
-              
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">
-                  <span class="show-ar">رقم الجوال</span><span class="show-en">Mobile Number</span>
-                </label>
-                <input type="tel" id="form-phone" required placeholder="05xxxxxxxx" class="w-full bg-stone-50 border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-brand-emerald">
-              </div>
-              
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">
-                  <span class="show-ar">الخدمة المطلوبة</span><span class="show-en">Desired Service</span>
-                </label>
-                <select id="form-service" required class="w-full bg-stone-50 border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-brand-emerald">
-                  <option class="show-ar" value="التمريض المنزلي العام للمرضى">التمريض المنزلي العام للمرضى</option>
-                  <option class="show-ar" value="إعطاء الحقن وإدارة الأدوية والمحاليل">إعطاء الحقن وإدارة الأدوية والمحاليل</option>
-                  <option class="show-ar" value="رعاية ومرافقة كبار السن والعجزة">رعاية ومرافقة كبار السن والعجزة</option>
-                  <option class="show-ar" value="رعاية الأطفال والمواليد والرضع">رعاية الأطفال والمواليد والرضع</option>
-                  <option class="show-ar" value="الرعاية بعد العمليات وفترات التعافي للجميع">الرعاية بعد العمليات وفترات التعافي للجميع</option>
-                  <option class="show-ar" value="الدعم الصحي الوقائي والرفاهية العائلية">الدعم الصحي الوقائي والرفاهية العائلية</option>
-                  <option class="show-en" value="General Home Clinical Nursing">General Home Clinical Nursing</option>
-                  <option class="show-en" value="Injections & Medication Administration">Injections & Medication Administration</option>
-                  <option class="show-en" value="Elderly Companionship & Care">Elderly Companionship & Care</option>
-                  <option class="show-en" value="Pediatric & Newborn Home Support">Pediatric & Newborn Home Support</option>
-                  <option class="show-en" value="Post-Operative & Surgical Recovery">Post-Operative & Surgical Recovery</option>
-                  <option class="show-en" value="Wellness & Preventative Home Support">Wellness & Preventative Home Support</option>
-                </select>
-              </div>
-              
-              <div>
-                <label class="block text-xs font-bold text-slate-700 mb-1">
-                  <span class="show-ar">تفاصيل الحالة (اختياري)</span><span class="show-en">Inquiry Details (Optional)</span>
-                </label>
-                <textarea id="form-message" rows="3" class="w-full bg-stone-50 border border-stone-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-brand-emerald" placeholder="..."></textarea>
-              </div>
-              
-              <button type="submit" class="w-full bg-brand-emerald hover:bg-brand-emeraldLight text-brand-cream font-bold py-3 rounded-lg transition-all text-sm shadow cursor-pointer">
-                <span class="show-ar">إرسال الاستفسار الآن (البريد الإلكتروني)</span>
-                <span class="show-en">Submit Inquiry (Send Email)</span>
-              </button>
-            </form>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-  <!-- SERVICES SECTION -->
-  <section id="services" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-emeraldDark">
-          <span class="show-ar">خدماتنا التمريضية المخصصة</span>
-          <span class="show-en">Our Comprehensive Services</span>
-        </h2>
-        <p class="text-sm sm:text-base text-slate-600 leading-relaxed">
-          <span class="show-ar">نقدم خدمات تمريض ورعاية منزلية مرنة ومصممة لتناسب مختلف الفئات العمرية والحالات الصحية. نوضح أدناه أمثلة تمثيلية لما يمكن لفريقنا تقديمه من دعم، مع التأكيد على التزامنا بتعديل وتطوير خطط الرعاية بما يتناسب تماماً مع توجيهات الأطباء ورغبة الأسرة.</span>
-          <span class="show-en">We deliver professional and adaptive home nursing care customized to support different ages, health profiles, and recovering stages. Below are representative examples of how our dedicated nurses can assist, highlighting that we customize care schedules and plans entirely for your specific situation under medical oversight.</span>
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Service 1 -->
-        <div class="bg-brand-cream border border-brand-sand/40 rounded-2xl overflow-hidden flex flex-col justify-between glow-on-hover text-start rtl:text-right">
-          <div>
-            <div class="relative h-48 w-full bg-stone-100">
-              <img 
-                src="src/assets/images/nursing_clinical_1783719013382.jpg" 
-                alt="General Home Clinical Nursing" 
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-              >
-            </div>
-            <div class="p-6 sm:p-8">
-              <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brand-emerald mb-4 shadow-sm">
-                <svg class="w-6 h-6 text-brand-emerald" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path></svg>
-              </div>
-              <h3 class="text-lg font-bold text-brand-emeraldDark mb-3">
-                <span class="show-ar">التمريض المنزلي العام للمرضى</span>
-                <span class="show-en">General Home Clinical Nursing</span>
-              </h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                <span class="show-ar">مراقبة العلامات الحيوية، العناية بالجروح، متابعة سوائل الجسم والتحاليل، ومتابعة الوضع الصحي للمرضى من مختلف الأعمار.</span>
-                <span class="show-en">Monitoring vital signs, professional wound dressing, managing body fluids, and ensuring overall health assessments at home for individuals of all ages.</span>
-              </p>
-            </div>
-          </div>
-          <div class="px-6 sm:px-8 pb-6 sm:pb-8">
-            <a href="#contact-form" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-emerald hover:text-brand-gold transition-colors">
-              <span class="show-ar">اطلب الخدمة</span><span class="show-en">Inquire Now</span> &rarr;
-            </a>
-          </div>
-        </div>
-
-        <!-- Service 2 -->
-        <div class="bg-brand-cream border border-brand-sand/40 rounded-2xl overflow-hidden flex flex-col justify-between glow-on-hover text-start rtl:text-right">
-          <div>
-            <div class="relative h-48 w-full bg-stone-100">
-              <img 
-                src="src/assets/images/medication_management_1783719622889.jpg" 
-                alt="Injections & Medication Administration" 
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-              >
-            </div>
-            <div class="p-6 sm:p-8">
-              <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brand-emerald mb-4 shadow-sm">
-                <svg class="w-6 h-6 text-brand-emerald" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-              </div>
-              <h3 class="text-lg font-bold text-brand-emeraldDark mb-3">
-                <span class="show-ar">إعطاء الحقن وإدارة الأدوية</span>
-                <span class="show-en">Injections & Medication Administration</span>
-              </h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                <span class="show-ar">إعطاء الحقن الوريدية والعضلية تحت الجلد، وإعطاء المحاليل بجرعاتها الدقيقة وتنظيم الأدوية اليومية تحت إشراف طبي صارم.</span>
-                <span class="show-en">Administering prescribed intravenous (IV) or intramuscular (IM) injections and carefully scheduling medications under doctor instructions.</span>
-              </p>
-            </div>
-          </div>
-          <div class="px-6 sm:px-8 pb-6 sm:pb-8">
-            <a href="#contact-form" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-emerald hover:text-brand-gold transition-colors">
-              <span class="show-ar">اطلب الخدمة</span><span class="show-en">Inquire Now</span> &rarr;
-            </a>
-          </div>
-        </div>
-
-        <!-- Service 3 -->
-        <div class="bg-brand-cream border border-brand-sand/40 rounded-2xl overflow-hidden flex flex-col justify-between glow-on-hover text-start rtl:text-right">
-          <div>
-            <div class="relative h-48 w-full bg-stone-100">
-              <img 
-                src="src/assets/images/elderly_care_home_1783718987604.jpg" 
-                alt="Elderly Companionship & Care" 
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-              >
-            </div>
-            <div class="p-6 sm:p-8">
-              <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brand-emerald mb-4 shadow-sm">
-                <svg class="w-6 h-6 text-brand-emerald" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"></path></svg>
-              </div>
-              <h3 class="text-lg font-bold text-brand-emeraldDark mb-3">
-                <span class="show-ar">رعاية ومرافقة كبار السن والعجزة</span>
-                <span class="show-en">Elderly Companionship & Care</span>
-              </h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                <span class="show-ar">مرافقة عطوفة يومية، مساعدة في الحركة والتنقل الآمن والأنشطة الأساسية، والتذكير الفعّال بمواعيد الفحوصات الطبية والأدوية.</span>
-                <span class="show-en">Compassionate daily support, mobility and transfer assistance, and structured reminders for essential medications, medical visits, and meals.</span>
-              </p>
-            </div>
-          </div>
-          <div class="px-6 sm:px-8 pb-6 sm:pb-8">
-            <a href="#contact-form" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-emerald hover:text-brand-gold transition-colors">
-              <span class="show-ar">اطلب الخدمة</span><span class="show-en">Inquire Now</span> &rarr;
-            </a>
-          </div>
-        </div>
-
-        <!-- Service 4 -->
-        <div class="bg-brand-cream border border-brand-sand/40 rounded-2xl overflow-hidden flex flex-col justify-between glow-on-hover text-start rtl:text-right">
-          <div>
-            <div class="relative h-48 w-full bg-stone-100">
-              <img 
-                src="src/assets/images/newborn_baby_care_1783719001906.jpg" 
-                alt="Pediatric & Newborn Home Support" 
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-              >
-            </div>
-            <div class="p-6 sm:p-8">
-              <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brand-emerald mb-4 shadow-sm">
-                <svg class="w-6 h-6 text-brand-emerald" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0112 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 013 12c0-.778.099-1.533.284-2.253"></path></svg>
-              </div>
-              <h3 class="text-lg font-bold text-brand-emeraldDark mb-3">
-                <span class="show-ar">رعاية الأطفال والمواليد بالمنزل</span>
-                <span class="show-en">Pediatric & Newborn Home Support</span>
-              </h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                <span class="show-ar">مساعدة الأمهات في رعاية الأطفال حديثي الولادة والمبتسرين، ومراقبة مؤشرات النمو وتقديم النصائح التمريضية والوقائية للوالدين.</span>
-                <span class="show-en">Providing support for families with newborn baby care, tracking growth parameters, and guiding parents on pediatric wellness and preventative care.</span>
-              </p>
-            </div>
-          </div>
-          <div class="px-6 sm:px-8 pb-6 sm:pb-8">
-            <a href="#contact-form" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-emerald hover:text-brand-gold transition-colors">
-              <span class="show-ar">اطلب الخدمة</span><span class="show-en">Inquire Now</span> &rarr;
-            </a>
-          </div>
-        </div>
-
-        <!-- Service 5 -->
-        <div class="bg-brand-cream border border-brand-sand/40 rounded-2xl overflow-hidden flex flex-col justify-between glow-on-hover text-start rtl:text-right">
-          <div>
-            <div class="relative h-48 w-full bg-stone-100">
-              <img 
-                src="src/assets/images/post_op_recovery_1783719635522.jpg" 
-                alt="Post-Operative & Surgical Recovery" 
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-              >
-            </div>
-            <div class="p-6 sm:p-8">
-              <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brand-emerald mb-4 shadow-sm">
-                <svg class="w-6 h-6 text-brand-emerald" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
-              </div>
-              <h3 class="text-lg font-bold text-brand-emeraldDark mb-3">
-                <span class="show-ar">الرعاية بعد العمليات وفترات التعافي</span>
-                <span class="show-en">Post-Operative & Surgical Recovery</span>
-              </h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                <span class="show-ar">توفير رعاية تخصصية للمتعافين حديثاً من العمليات الجراحية أو الإقامات الطويلة في المستشفيات لتسريع عملية الشفاء وتجنب المضاعفات.</span>
-                <span class="show-en">Specialized post-surgical home nursing to encourage rapid healing, prevent complications, manage discomfort, and support daily activities.</span>
-              </p>
-            </div>
-          </div>
-          <div class="px-6 sm:px-8 pb-6 sm:pb-8">
-            <a href="#contact-form" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-emerald hover:text-brand-gold transition-colors">
-              <span class="show-ar">اطلب الخدمة</span><span class="show-en">Inquire Now</span> &rarr;
-            </a>
-          </div>
-        </div>
-
-        <!-- Service 6 -->
-        <div class="bg-brand-cream border border-brand-sand/40 rounded-2xl overflow-hidden flex flex-col justify-between glow-on-hover text-start rtl:text-right">
-          <div>
-            <div class="relative h-48 w-full bg-stone-100">
-              <img 
-                src="src/assets/images/preventative_wellness_1783719650257.jpg" 
-                alt="Wellness & Preventative Home Support" 
-                class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-              >
-            </div>
-            <div class="p-6 sm:p-8">
-              <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-brand-emerald mb-4 shadow-sm">
-                <svg class="w-6 h-6 text-brand-emerald" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-9-4.5h15m-15 9h15"></path></svg>
-              </div>
-              <h3 class="text-lg font-bold text-brand-emeraldDark mb-3">
-                <span class="show-ar">الدعم الصحي الوقائي والرفاهية</span>
-                <span class="show-en">Wellness & Preventative Home Support</span>
-              </h3>
-              <p class="text-sm text-slate-600 leading-relaxed">
-                <span class="show-ar">المساعدة في التغذية الصحية السليمة، تشجيع حركات العلاج الطبيعي البسيطة، وتقديم الدعم النفسي والوقائي المتكامل في المنزل.</span>
-                <span class="show-en">Assisting with basic range-of-motion movements, preparing structured nutritional meals, and delivering compassionate preventative care.</span>
-              </p>
-            </div>
-          </div>
-          <div class="px-6 sm:px-8 pb-6 sm:pb-8">
-            <a href="#contact-form" class="inline-flex items-center gap-1.5 text-xs font-bold text-brand-emerald hover:text-brand-gold transition-colors">
-              <span class="show-ar">اطلب الخدمة</span><span class="show-en">Inquire Now</span> &rarr;
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="mt-12 text-center bg-[#f9f6f0] border border-stone-200 rounded-xl p-6 max-w-3xl mx-auto">
-        <p class="text-sm text-slate-700 leading-relaxed">
-          <span class="show-ar">هل تبحث عن ترتيب رعاية تمريضية خاصة بحالة معينة؟ منسقونا جاهزون لمساعدتكم والإجابة على كافة تساؤلاتكم وتوفير التنسيق الطبي الملائم.</span>
-          <span class="show-en">Looking for a customized clinical arrangement? Our responsive medical coordination team is ready to answer all your inquiries and help map out the optimal home nursing care plan.</span>
-        </p>
-        <p class="text-xs text-slate-400 mt-3">
-          <span class="show-ar">*الخدمات المذكورة هي أمثلة توضيحية لخيارات الرعاية العامة التي يمكن تقديمها وليست قائمة حصرية كاملة.</span>
-          <span class="show-en">*Note: The services mentioned above are illustrative examples of general care options we support, rather than an exhaustive catalog.</span>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRUST & VALUES -->
-  <section id="whyUs" class="py-20 bg-brand-cream">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-        
-        <div class="lg:col-span-5 space-y-6 text-center lg:text-start rtl:lg:text-right">
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-emeraldDark">
-            <span class="show-ar">لماذا رعاية تمريض منزلي؟</span>
-            <span class="show-en">Why Choose Nurses Home Care?</span>
-          </h2>
-          <p class="text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
-            <span class="show-ar">قيم مهنية وجدارة مطلقة في تقديم الخدمات الصحية المنزلية المعتمدة</span>
-            <span class="show-en">Factual integrity, certified professionals, and complete dedication to home care</span>
+        <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500">
+          <p>
+            <span class="lang-ar">جميع الحقوق محفوظة © ٢٠٢٦ رعاية تمريض منزلي. المملكة العربية السعودية.</span>
+            <span class="lang-en">All Rights Reserved © 2026 Nurses Home Care. Saudi Arabia.</span>
           </p>
-          <p class="text-sm text-slate-600 leading-relaxed">
-            <span class="show-ar">نلتزم بتقديم رعاية طبية منزلية تتسم بالأمان والمهنية العالية وقيم النزاهة المهنية المطلقة. نحن ندرك تماماً حساسية الرعاية المنزلية، ولذلك نعمل بجدية فائقة للتأكد من تلبية متطلباتكم الطبية واليومية بمهنية وخصوصية تامة.</span>
-            <span class="show-en">We are strictly dedicated to providing premium clinical home care guided by clinical safety, factual transparency, and high professional standards. We match qualified staff according to your physical demands and family context.</span>
-          </p>
-          <div class="border-t border-brand-sand pt-6 flex items-center justify-center lg:justify-start gap-4">
-            <div class="w-12 h-12 rounded-full bg-brand-emerald flex items-center justify-center text-brand-cream font-bold text-lg">✓</div>
-            <div class="text-start rtl:text-right">
-              <p class="text-sm font-bold text-brand-emeraldDark">
-                <span class="show-ar">رعاية تمريضية مرخصة بنسبة ١٠٠٪</span>
-                <span class="show-en">100% Certified Nursing Care</span>
-              </p>
-              <p class="text-xs text-slate-500">
-                <span class="show-ar">موثوقة وآمنة وصادقة بالكامل</span>
-                <span class="show-en">Safe, honest, and entirely reliable</span>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6 text-start rtl:text-right">
-          <!-- Factor 1 -->
-          <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-2">
-            <h3 class="font-bold text-brand-emeraldDark text-base">
-              <span class="show-ar">كادر تمريضي مرخص ومؤهل</span>
-              <span class="show-en">Qualified & Licensed Nurses</span>
-            </h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              <span class="show-ar">نحرص على تلبية متطلباتكم من خلال ممرضين وممرضات يحملون مؤهلات طبية معتمدة لضمان تقديم أعلى مستويات الرعاية السليمة.</span>
-              <span class="show-en">We fulfill care requests through licensed, professional nurses who possess valid health credentials to guarantee high standards of safety.</span>
-            </p>
-          </div>
-          <!-- Factor 2 -->
-          <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-2">
-            <h3 class="font-bold text-brand-emeraldDark text-base">
-              <span class="show-ar">خطط رعاية مخصصة ومطابقة</span>
-              <span class="show-en">Customized & Compliant Plans</span>
-            </h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              <span class="show-ar">نصمم خطة الزيارات والمهام بشكل فردي وخاص لكل حالة، متبعين بدقة توصيات أطباء المريض المعالجين.</span>
-              <span class="show-en">Each case is evaluated individually to design a custom visiting schedule and caregiver checklist aligned with doctor recommendations.</span>
-            </p>
-          </div>
-          <!-- Factor 3 -->
-          <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-2">
-            <h3 class="font-bold text-brand-emeraldDark text-base">
-              <span class="show-ar">تنسيق طبي واستجابة متواصلة</span>
-              <span class="show-en">Continuous Coordination</span>
-            </h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              <span class="show-ar">نوفر قنوات تواصل سريعة ومرنة لترتيب المواعيد وتحديث جدول الرعاية المنزلية بما يضمن راحتكم واستمرارية الخدمة.</span>
-              <span class="show-en">Our responsive desk coordinates schedules, answers client queries promptly, and handles client updates with total flexibility.</span>
-            </p>
-          </div>
-          <!-- Factor 4 -->
-          <div class="bg-white p-6 rounded-2xl border border-stone-200 shadow-sm space-y-2">
-            <h3 class="font-bold text-brand-emeraldDark text-base">
-              <span class="show-ar">أمان وخصوصية تامة للأسرة</span>
-              <span class="show-en">Absolute Privacy & Ethics</span>
-            </h3>
-            <p class="text-xs text-slate-600 leading-relaxed">
-              <span class="show-ar">نلتزم بأعلى معايير الأمان السلوكي والخصوصية الأخلاقية لحماية كرامة وخصوصية المريض وجميع أفراد عائلته بالمنزل.</span>
-              <span class="show-en">We value the privacy of your home and enforce a strict code of professional ethics to secure patient dignity and ease of mind.</span>
-            </p>
+          <div class="flex gap-4">
+            <button onclick="toggleLanguage()" class="hover:text-emerald-400 font-bold">
+              <span class="lang-ar">Switch to English</span>
+              <span class="lang-en">الانتقال للعربية</span>
+            </button>
           </div>
         </div>
 
       </div>
-    </div>
-  </section>
+    </footer>
 
-  <!-- HOW IT WORKS -->
-  <section id="howItWorks" class="py-20 bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      
-      <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
-        <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-emeraldDark">
-          <span class="show-ar">خطوات الحصول على الخدمة</span>
-          <span class="show-en">Simple 3-Step Process</span>
-        </h2>
-        <p class="text-sm text-slate-600">
-          <span class="show-ar">عملية بسيطة وسريعة لتأمين رعاية تمريضية منزلية موثوقة لعائلتك</span>
-          <span class="show-en">Securing professional home nursing care for your family has never been easier</span>
-        </p>
-      </div>
+  </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-        <!-- Step 1 -->
-        <div class="space-y-4 bg-stone-50 border border-stone-200 p-6 rounded-2xl">
-          <div class="w-12 h-12 bg-brand-cream border border-brand-sand text-brand-emerald font-bold text-lg rounded-full flex items-center justify-center mx-auto shadow-sm">1</div>
-          <h3 class="font-bold text-base text-brand-emeraldDark">
-            <span class="show-ar">١. تقديم الطلب أو الاستفسار</span>
-            <span class="show-en">1. Quick Outreach</span>
-          </h3>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            <span class="show-ar">تواصل معنا مباشرة عبر مكالمة هاتفية، أو رسالة واتساب، أو من خلال ملء نموذج الاستفسار بالأسفل.</span>
-            <span class="show-en">Contact us directly via a phone call, WhatsApp chat, or complete the short inquiry form below on our website.</span>
-          </p>
-        </div>
-        <!-- Step 2 -->
-        <div class="space-y-4 bg-stone-50 border border-stone-200 p-6 rounded-2xl">
-          <div class="w-12 h-12 bg-brand-cream border border-brand-sand text-brand-emerald font-bold text-lg rounded-full flex items-center justify-center mx-auto shadow-sm">2</div>
-          <h3 class="font-bold text-base text-brand-emeraldDark">
-            <span class="show-ar">٢. الاستشارة والتقييم الأولي</span>
-            <span class="show-en">2. Plan Formulation</span>
-          </h3>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            <span class="show-ar">يتواصل معك منسقنا الطبي لفهم احتياجات الحالة بدقة، مراجعة توصيات الطبيب، واقتراح خطة رعاية مناسبة.</span>
-            <span class="show-en">Our medical coordinator speaks with you to understand health goals, review clinical instructions, and propose a customized nursing routine.</span>
-          </p>
-        </div>
-        <!-- Step 3 -->
-        <div class="space-y-4 bg-stone-50 border border-stone-200 p-6 rounded-2xl">
-          <div class="w-12 h-12 bg-brand-cream border border-brand-sand text-brand-emerald font-bold text-lg rounded-full flex items-center justify-center mx-auto shadow-sm">3</div>
-          <h3 class="font-bold text-base text-brand-emeraldDark">
-            <span class="show-ar">٣. بدء الخدمة والزيارات المنزلية</span>
-            <span class="show-en">3. Care Execution Begins</span>
-          </h3>
-          <p class="text-xs text-slate-600 leading-relaxed">
-            <span class="show-ar">يتم مطابقة الحالة مع الممرض أو الممرضة الأنسب للبدء بالزيارات وفق الجدول الزمني المتفق عليه وتوفير الرعاية فوراً.</span>
-            <span class="show-en">We match the perfect professional nurse for your schedule and family dynamics to begin clinical visits and supportive home care.</span>
-          </p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- QUICK DIRECT CHANNELS SECTION -->
-  <section id="contact" class="py-16 bg-brand-cream/50 border-t border-b border-stone-200">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-brand-emeraldDark">
-        <span class="show-ar">تنسيق رعاية منزلية فورية ومريحة</span>
-        <span class="show-en">Coordinate Immediate & Convenient Home Care</span>
-      </h2>
-      <p class="text-sm sm:text-base text-slate-700 leading-relaxed max-w-2xl mx-auto">
-        <span class="show-ar">يسعد منسقونا الإجابة على جميع اتصالاتكم واستفساراتكم على مدار الساعة لتسهيل ترتيب خطة رعاية مخصصة ومريحة لأسرتكم في جميع مناطق المملكة.</span>
-        <span class="show-en">Our coordinators are here to receive calls and questions around the clock to organize an integrated, certified nursing arrangement.</span>
-      </p>
-
-      <div class="flex flex-wrap justify-center gap-4">
-        <a href="tel:0551404251" class="inline-flex items-center gap-2 bg-brand-emerald hover:bg-brand-emeraldLight text-brand-cream font-bold px-6 py-3.5 rounded-xl shadow-sm hover:shadow transition-all text-sm">
-          <span class="show-ar">اتصل بنا: 0551404251</span>
-          <span class="show-en">Call Us: 0551404251</span>
-        </a>
-
-        <a href="https://wa.me/966551404251" target="_blank" class="inline-flex items-center gap-2 bg-[#25D366] hover:bg-[#20ba5a] text-white font-bold px-6 py-3.5 rounded-xl shadow-sm hover:shadow transition-all text-sm">
-          <span class="show-ar">مراسلة عبر واتساب</span>
-          <span class="show-en">WhatsApp Message</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-brand-emeraldDark text-brand-sand py-12 border-t border-brand-emerald">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-12 gap-8 mb-12 text-start rtl:text-right">
-      
-      <div class="md:col-span-5 space-y-4">
-        <h3 class="text-xl font-bold text-brand-cream">
-          <span class="show-ar">رعاية تمريض منزلي</span>
-          <span class="show-en">Nurses Home Care</span>
-        </h3>
-        <p class="text-xs text-brand-sand/80 leading-relaxed max-w-sm">
-          <span class="show-ar">مؤسسة رعاية تمريض منزلي (Nurses Home Care) تقدم خدمات التمريض والرعاية المنزلية المتكاملة لجميع الأعمار في مختلف مدن المملكة العربية السعودية، ملتزمين بالرحمة والجودة الطبية والنزاهة الأخلاقية والمهنية المطلقة.</span>
-          <span class="show-en">Nurses Home Care provides integrated, professional home nursing and healthcare support services for all ages across Saudi Arabia. Committed to absolute safety, clinical standards, compassionate treatment, and ethical integrity.</span>
-        </p>
-      </div>
-
-      <div class="md:col-span-4 space-y-4">
-        <h4 class="font-bold text-sm text-brand-cream">
-          <span class="show-ar">قنوات الاتصال الرسمية</span>
-          <span class="show-en">Official Contacts</span>
-        </h4>
-        <ul class="text-xs text-brand-sand/80 space-y-2.5">
-          <li><span class="show-ar">رقم الهاتف الداعم: 0551404251</span><span class="show-en">Phone: 0551404251</span></li>
-          <li><span class="show-ar">التغطية الجغرافية: جميع مدن المملكة العربية السعودية</span><span class="show-en">Coverage: All Saudi Arabia Cities</span></li>
-        </ul>
-      </div>
-
-      <div class="md:col-span-3 space-y-4">
-        <h4 class="font-bold text-sm text-brand-cream">
-          <span class="show-ar">ساعات استقبال الطلبات</span>
-          <span class="show-en">Working & Contact Hours</span>
-        </h4>
-        <p class="text-xs text-[#f0e9dc]/80 leading-relaxed">
-          <span class="show-ar">نحن في خدمتكم طوال أيام الأسبوع على مدار ٢٤ ساعة، ونرد على كافة الاتصالات والاستفسارات الواردة بمرونة تامة وسرعة قصوى.</span>
-          <span class="show-en">We operate 24 hours a day, 7 days a week, and are dedicated to answering your calls and coordinate services promptly.</span>
-        </p>
-        <p class="text-xs text-brand-gold font-semibold pt-2">nursecare24.com</p>
-      </div>
-
-    </div>
-
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-brand-emerald/40 pt-6 text-center text-xs text-brand-sand/60">
-      <p>
-        <span class="show-ar">جميع الحقوق محفوظة. رعاية تمريض منزلي © ٢٠٢٦.</span>
-        <span class="show-en">All rights reserved. Nurses Home Care © 2026.</span>
-      </p>
-    </div>
-  </footer>
-
-  <!-- JS CODE FOR BILINGUAL AND SUBMISSION -->
+  <!-- STATE MANAGEMENT JAVASCRIPT -->
   <script>
+    // Initial State
+    let currentLang = 'ar';
+    let isMenuOpen = false;
+
+    // Set Initial Presentation
+    updateLanguageUI(currentLang);
+
+    // Toggle Language Handler
     function toggleLanguage() {
-      const body = document.body;
-      const isArabic = body.classList.contains('lang-ar');
-      if (isArabic) {
-        body.classList.remove('lang-ar');
-        body.classList.add('lang-en');
-        document.documentElement.dir = 'ltr';
-        document.documentElement.lang = 'en';
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      updateLanguageUI(currentLang);
+    }
+
+    // Update Language DOM changes
+    function updateLanguageUI(lang) {
+      document.body.setAttribute('data-lang', lang);
+      document.documentElement.lang = lang;
+      document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+
+      // Update Form Inputs Placeholders
+      const nameInput = document.getElementById('user-name');
+      const phoneInput = document.getElementById('user-phone');
+      const messageInput = document.getElementById('user-message');
+      const serviceSelect = document.getElementById('user-service');
+
+      if (lang === 'ar') {
+        if (nameInput) nameInput.placeholder = "مثال: محمد بن عبد العزيز";
+        if (phoneInput) phoneInput.placeholder = "مثال: 0551404251";
+        if (messageInput) messageInput.placeholder = "مثال: العمر التقريبي، عدد الساعات أو الزيارات المطلوبة، وتفاصيل الحالة العامة لتجهيز الرعاية المناسبة...";
+        if (serviceSelect) serviceSelect.options[0].text = "-- يرجى اختيار الخدمة التقريبية --";
       } else {
-        body.classList.remove('lang-en');
-        body.classList.add('lang-ar');
-        document.documentElement.dir = 'rtl';
-        document.documentElement.lang = 'ar';
+        if (nameInput) nameInput.placeholder = "e.g. Abdullah Al-Sudairy";
+        if (phoneInput) phoneInput.placeholder = "e.g. 0551404251";
+        if (messageInput) messageInput.placeholder = "e.g. Patient’s general age, preferred hours or visit frequency, and any specific health conditions to help us prepare...";
+        if (serviceSelect) serviceSelect.options[0].text = "-- Please select the general service --";
       }
     }
 
+    // Mobile Menu Toggles
+    function toggleMobileMenu() {
+      isMenuOpen = !isMenuOpen;
+      const drawer = document.getElementById('mobile-menu-drawer');
+      const openIcon = document.getElementById('menu-icon-open');
+      const closeIcon = document.getElementById('menu-icon-close');
+
+      if (isMenuOpen) {
+        drawer.classList.remove('hidden');
+        openIcon.classList.add('hidden');
+        openIcon.classList.remove('block');
+        closeIcon.classList.remove('hidden');
+        closeIcon.classList.add('block');
+      } else {
+        drawer.classList.add('hidden');
+        openIcon.classList.remove('hidden');
+        openIcon.classList.add('block');
+        closeIcon.classList.add('hidden');
+        closeIcon.classList.remove('block');
+      }
+    }
+
+    function closeMobileMenu() {
+      isMenuOpen = false;
+      const drawer = document.getElementById('mobile-menu-drawer');
+      const openIcon = document.getElementById('menu-icon-open');
+      const closeIcon = document.getElementById('menu-icon-close');
+
+      drawer.classList.add('hidden');
+      openIcon.classList.remove('hidden');
+      openIcon.classList.add('block');
+      closeIcon.classList.add('hidden');
+      closeIcon.classList.remove('block');
+    }
+
+    // Form submission mailto handler
     function handleFormSubmit(event) {
       event.preventDefault();
-      const name = document.getElementById('form-name').value;
-      const phone = document.getElementById('form-phone').value;
-      const service = document.getElementById('form-service').value;
-      const message = document.getElementById('form-message').value;
 
-      const subject = encodeURIComponent("Nurses Home Care - Inquiry / طلب رعاية منزلية");
-      const body = encodeURIComponent(
-        "Name / الاسم: " + name + "\\n" +
-        "Phone / الجوال: " + phone + "\\n" +
-        "Service / الخدمة: " + service + "\\n" +
-        "Message / التفاصيل:\\n" + message + "\\n\\n" +
-        "--- Submitted via nursecare24.com ---"
-      );
+      const name = document.getElementById('user-name').value;
+      const phone = document.getElementById('user-phone').value;
+      const service = document.getElementById('user-service').value;
+      const message = document.getElementById('user-message').value;
 
-      window.location.href = "mailto:ayaarab720@gmail.com?subject=" + subject + "&body=" + body;
+      if (!name || !phone) {
+        alert(currentLang === 'ar' ? 'يرجى ملء حقول الاسم والجوال الأساسية' : 'Please fill in the required Name and Phone fields');
+        return;
+      }
+
+      // Hide Form & Show Success Message
+      const formEl = document.getElementById('care-inquiry-form');
+      const alertEl = document.getElementById('form-success-alert');
+      
+      formEl.classList.add('hidden');
+      alertEl.classList.remove('hidden');
+
+      // Mailto preparation
+      const recipient = 'ayaarab720@gmail.com';
+      const subject = encodeURIComponent(`Nurses Home Care Inquiry - ${name}`);
+      const bodyContent = `NURSES HOME CARE / رعاية تمريض منزلي
+---------------------------------------------
+- Name / الاسم: ${name}
+- Phone / الجوال: ${phone}
+- Service / الخدمة المطلوبة: ${service || 'General Care Request'}
+- Details / تفاصيل الرعاية:
+${message || 'No extra details provided.'}
+---------------------------------------------
+Sent from the official landing website.`;
+
+      const body = encodeURIComponent(bodyContent);
+      const mailtoUrl = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+      setTimeout(() => {
+        window.location.href = mailtoUrl;
+      }, 400);
+
+      // Re-show form after 6 seconds
+      setTimeout(() => {
+        formEl.classList.remove('hidden');
+        alertEl.classList.add('hidden');
+      }, 6000);
     }
+
+    // Initialize Lucide Icons
+    lucide.createIcons();
   </script>
 </body>
 </html>
