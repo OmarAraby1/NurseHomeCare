@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الصفحة غير موجودة | Page Not Found | Nurses Home Care</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Configure Tailwind custom classes -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Frosted Glass Theme & Custom Background Gradient */
+    .frosted-glass-bg {
+      background: radial-gradient(circle at top right, #E0F2F1 0%, #F8F9FA 50%, #FFF9C4 100%);
+    }
+
+    .frosted-glass-card {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.45);
+    }
+
+    .frosted-glass-header {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    /* Bilingual toggling strategy */
+    body[data-lang="ar"] .lang-en { display: none !important; }
+    body[data-lang="en"] .lang-ar { display: none !important; }
+    
+    body[data-lang="ar"] { 
+      direction: rtl; 
+      font-family: 'Cairo', sans-serif; 
+    }
+    body[data-lang="en"] { 
+      direction: ltr; 
+      font-family: 'Plus Jakarta Sans', sans-serif; 
+    }
+  </style>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body data-lang="ar" class="frosted-glass-bg text-stone-900 antialiased min-h-screen">
+
+  <div class="min-h-screen flex flex-col justify-between">
+    
+    <!-- HEADER -->
+    <header class="frosted-glass-header w-full py-4 px-6 md:px-12 flex items-center justify-between h-20">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-xl bg-emerald-600 text-stone-50 flex items-center justify-center shadow-lg shadow-emerald-600/10">
+          <i data-lucide="heart" class="h-5.5 w-5.5 fill-stone-50/10 stroke-[2.2]"></i>
+        </div>
+        <div class="text-start">
+          <h1 class="text-base sm:text-lg font-extrabold tracking-tight text-stone-900">
+            <span class="lang-ar">رعاية تمريض منزلي</span>
+            <span class="lang-en">Nurses Home Care</span>
+          </h1>
+          <p class="text-[10px] text-stone-500 font-medium">
+            <span class="lang-ar">رعاية صحية متكاملة</span>
+            <span class="lang-en">Professional Home Nursing</span>
+          </p>
+        </div>
+      </div>
+
+      <button 
+        onclick="toggleLanguage()"
+        class="px-3 py-1.5 text-xs font-bold text-stone-700 bg-white/60 hover:bg-white/80 rounded-lg border border-stone-200 transition-all cursor-pointer"
+      >
+        <span class="lang-ar">English</span>
+        <span class="lang-en">العربية</span>
+      </button>
+    </header>
+
+    <!-- MAIN 404 CARD -->
+    <main class="flex-grow flex items-center justify-center p-4">
+      <div class="max-w-md w-full bg-white/40 backdrop-blur-lg rounded-3xl p-8 md:p-10 border border-white/40 shadow-2xl text-center flex flex-col items-center relative overflow-hidden">
+        
+        <!-- Heart rate visual indicator -->
+        <div class="relative mb-6">
+          <div class="absolute inset-0 rounded-full bg-emerald-500/10 animate-ping"></div>
+          <div class="h-20 w-20 rounded-full bg-emerald-50 text-emerald-600 flex items-center justify-center relative border border-emerald-100">
+            <i data-lucide="heart" class="h-10 w-10 stroke-[1.8] fill-emerald-500/10"></i>
+          </div>
+        </div>
+
+        <span class="text-xs uppercase font-black tracking-widest text-emerald-600 px-3 py-1 bg-emerald-50 rounded-full border border-emerald-100 mb-3">
+          404
+        </span>
+
+        <h2 class="text-2xl sm:text-3xl font-black text-stone-900 mb-4">
+          <span class="lang-ar">الصفحة غير موجودة</span>
+          <span class="lang-en">Page Not Found</span>
+        </h2>
+
+        <p class="text-stone-600 text-sm sm:text-base leading-relaxed mb-8 max-w-sm">
+          <span class="lang-ar">عذراً، الصفحة التي تحاول الوصول إليها غير موجودة أو تم نقلها.</span>
+          <span class="lang-en">The page you are looking for does not exist or has been moved.</span>
+        </p>
+
+        <div class="w-full flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-center">
+          <a 
+            href="index.html"
+            class="flex items-center justify-center gap-2 px-6 py-3.5 bg-stone-900 hover:bg-emerald-600 text-stone-50 rounded-xl text-sm font-extrabold shadow-md transition-all duration-200"
+          >
+            <i data-lucide="home" class="h-4.5 w-4.5"></i>
+            <span class="lang-ar">العودة للرئيسية</span>
+            <span class="lang-en">Back to Home</span>
+          </a>
+
+          <a 
+            href="index.html#inquiry-form"
+            class="flex items-center justify-center gap-2 px-6 py-3.5 bg-white/80 hover:bg-white border border-stone-200 text-stone-900 rounded-xl text-sm font-extrabold shadow-sm transition-all duration-200"
+          >
+            <i data-lucide="phone" class="h-4.5 w-4.5 text-emerald-600"></i>
+            <span class="lang-ar">اتصل بنا</span>
+            <span class="lang-en">Contact Us</span>
+          </a>
+        </div>
+
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="w-full py-6 text-center text-xs text-stone-500 border-t border-stone-200/40 bg-white/20">
+      <p>
+        <span class="lang-ar">© ٢٠٢٦ رعاية تمريض منزلي. جميع الحقوق محفوظة.</span>
+        <span class="lang-en">© 2026 Nurses Home Care. All rights reserved.</span>
+      </p>
+    </footer>
+
+  </div>
+
+  <!-- STATE MANAGEMENT JAVASCRIPT -->
+  <script>
+    let currentLang = 'ar';
+
+    function toggleLanguage() {
+      currentLang = currentLang === 'ar' ? 'en' : 'ar';
+      document.body.setAttribute('data-lang', currentLang);
+      document.documentElement.lang = currentLang;
+      document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+    }
+
+    // Initialize Lucide Icons
+    lucide.createIcons();
+  </script>
+</body>
+</html>
